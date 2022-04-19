@@ -16,7 +16,6 @@ function html() {
     return gulp.src("src/html/*.html")
         .pipe(include())
         .pipe(gulp.dest("build"))
-        .pipe(connect.reload())
 }
 
 function buildHtml() {
@@ -29,7 +28,6 @@ function css() {
     return gulp.src("src/styles/*.scss")
         .pipe(sass().on("error", sass.logError))
         .pipe(gulp.dest("build/styles"))
-        .pipe(connect.reload())
 }
 
 function buildCss() {
@@ -40,17 +38,14 @@ function buildCss() {
 
 function js() {
     return gulp.src("src/js/*.js")
-
         .pipe(concat("app.js"))
         .pipe(uglifyjs())
-        .pipe(sourcemaps.write("."))
         .pipe(gulp.dest("build/js"))
-        .pipe(connect.reload())
 }
 
 function buildJs() {
     return gulp.src("src/js/*.js")
-        .pipe(concat("app.js"))
+        .pipe(concat("scripts.js"))
         .pipe(uglifyjs())
         .pipe(gulp.dest("build/js"))
 }
